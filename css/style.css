@@ -117,8 +117,27 @@ ul {
   overflow: hidden;
 }
 
+#list > li > .button {
+    position: absolute;
+    width: 213px;
+    height: 33px;
+    line-height: 33px;
+    font-size: 12px;
+    top: 136px;
+    left: 270px;
+    text-align: center;
+    background-color: #898989;
+    color: #ffffff;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+}
+
 #list > li.expanded {
     height: auto;
+}
+
+#list > li.expanded .button {
+    display: none;
 }
 
 li:hover {
