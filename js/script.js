@@ -2,17 +2,23 @@ $(document).ready(function() {
 
   var jobCount = $('#list .in').length;
   $('.list-count').text(jobCount + ' people');
-    
+
+  $("#search-text").keydown(function () {
+    if(event.keyCode == 32 /*space*/ || event.keyCode == 9 /*tab*/) {
+      $("#filter").append("<li>"+$("#search-text").val()+"</li>");
+      $("#search-text").val("");
+    }
+    return true;
+  });
   
   $("#search-text").keyup(function () {
      //$(this).addClass('hidden');
-  
+
     var searchTerm = $("#search-text").val();
-    var listItem = $('#list').children('li');
-  
-    
+
     var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-    
+    //debugger;
+
       //extends :contains to be case insensitive
   $.extend($.expr[':'], {
   'containsi': function(elem, i, match, array)
@@ -39,7 +45,7 @@ $(document).ready(function() {
     
   
       var jobCount = $('#list .in').length;
-    $('.list-count').text(jobCount + ' items');
+    $('.list-count').text(jobCount + ' people');
     
     //shows empty state text when no jobs found
     if(jobCount == '0') {
@@ -51,34 +57,6 @@ $(document).ready(function() {
     
   });
 
-  
-                  
-     /*  
-     An extra! This function implements
-     jQuery autocomplete in the searchbox.
-     Uncomment to use :)
-     
-     
- function searchList() {                
-    //array of list items
-    var listArray = [];
-  
-     $("#list li").each(function() {
-    var listText = $(this).text().trim();
-      listArray.push(listText);
-    });
-    
-    $('#search-text').autocomplete({
-        source: listArray
-    });
-    
-    
-  }
-                                   
-  searchList();
-*/
-  
-                    
 });
 
 
