@@ -5,16 +5,26 @@ $(document).ready(function() {
 
   $("#search-text").keydown(function () {
     if(event.keyCode == 32 /*space*/ || event.keyCode == 9 /*tab*/) {
-      $("#filter").append("<li>"+$("#search-text").val()+"</li>");
+      var newFilter = $("<li>"+$("#search-text").val()+"</li>").click(function(){
+        $(this).remove();
+      });
+      $("#filter").append(newFilter);
       $("#search-text").val("");
     }
     return true;
   });
   
   $("#search-text").keyup(function () {
-     //$(this).addClass('hidden');
+    var searchTerms = $("#filter>li").map(function(){
+        return $(this).html();
+    });
+    searchTerms.push($("#search-text").val());
 
-    var searchTerm = $("#search-text").val();
+    $("#list>li").each(function(){
+      
+    });
+
+    return true;
 
     var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
     //debugger;

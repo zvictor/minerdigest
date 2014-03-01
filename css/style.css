@@ -76,6 +76,7 @@ ul {
     height: 22px;
     float: left;
     margin-right: 8px;
+    cursor: pointer;
 }
 
 #filter li:after {
@@ -86,7 +87,6 @@ ul {
     padding: 1px 3px;
     background-color: #cccccc;
     color: #ffffff;
-    cursor: pointer;
 }
 
 #list {
