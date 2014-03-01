@@ -7,9 +7,12 @@ $(document).ready(function() {
     if(event.keyCode == 32 /*space*/ || event.keyCode == 9 /*tab*/) {
       var newFilter = $("<li>"+$("#search-text").val()+"</li>").click(function(){
         $(this).remove();
+        $("#search-text").trigger('keyup');
       });
-      $("#filter").append(newFilter);
+      if($("#search-text").val())
+        $("#filter").append(newFilter);
       $("#search-text").val("");
+      return false;
     }
     return true;
   });
@@ -21,40 +24,25 @@ $(document).ready(function() {
     searchTerms.push($("#search-text").val());
 
     $("#list>li").each(function(){
-      
-    });
+      var person = $(this);
+      var contains = _.every(searchTerms, function(term){
+        return person.data("cv").match(new RegExp(term, "i"));
+      });
 
-    return true;
-
-    var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
-    //debugger;
-
-      //extends :contains to be case insensitive
-  $.extend($.expr[':'], {
-  'containsi': function(elem, i, match, array)
-  {
-    return (elem.textContent || elem.innerText || '').toLowerCase()
-    .indexOf((match[3] || "").toLowerCase()) >= 0;
-  }
-});
-    
-    
-    $("#list li").not(":containsi('" + searchSplit + "')").each(function(e)   {
-      $(this).addClass('hiding out').removeClass('in');
-      setTimeout(function() {
-          $('.out').addClass('hidden');
-        }, 300);
-    });
-    
-    $("#list li:containsi('" + searchSplit + "')").each(function(e) {
-      $(this).removeClass('hidden out').addClass('in');
-      setTimeout(function() {
+      if(contains){
+        $(this).removeClass('hidden out').addClass('in');
+        setTimeout(function() {
           $('.in').removeClass('hiding');
         }, 1);
+      } else {
+        $(this).addClass('hiding out').removeClass('in');
+        setTimeout(function() {
+          $('.out').addClass('hidden');
+        }, 300);
+      }
     });
-    
-  
-      var jobCount = $('#list .in').length;
+
+    var jobCount = $('#list .in').length;
     $('.list-count').text(jobCount + ' people');
     
     //shows empty state text when no jobs found
