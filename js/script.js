@@ -57,8 +57,11 @@ $(document).ready(function() {
 
 });
 
-
-
+$(document).ready(function() {
+  $('#list>li').click(function(){
+    $(this).toggleClass('expanded');
+  });
+});
 
 
 

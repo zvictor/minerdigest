@@ -113,11 +113,17 @@ ul {
   color:#fff;
   position:relative;
   z-index:2;
+  height: 205px;
+  overflow: hidden;
+}
+
+#list > li.expanded {
+    height: auto;
 }
 
 li:hover {
-  background-color:#eaeaea;
-  border-color:#00BDE8;
+  background-color:#eaeaea !important;
+  border-color:#00BDE8 !important;
 }
 
 .empty-item {
