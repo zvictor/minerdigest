@@ -1,4 +1,5 @@
-minerdigest
+Galamsey Digest
 ===========
 
-MinerDigest - IDEAD2014 Project
+Galamsey Digest - IDEAD2014 Project
+Please check http://zvictor.github.io/galamsey/
