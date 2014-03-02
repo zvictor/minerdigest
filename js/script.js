@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('.list-count').text(jobCount + ' people');
 
   $("#search-text").keydown(function () {
-    if(event.keyCode == 32 /*space*/ || event.keyCode == 9 /*tab*/) {
+    if(event.keyCode == 32 /*space*/ || event.keyCode == 13 /*enter*/ || event.keyCode == 9 /*tab*/) {
       var newFilter = $("<li>"+$("#search-text").val()+"</li>").click(function(){
         $(this).remove();
         $("#search-text").trigger('keyup');
